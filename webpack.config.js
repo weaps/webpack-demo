@@ -1,4 +1,5 @@
 const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -15,11 +16,34 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|gif|jpeg|jpg|svg)$/,
+        test: /\.(png|gif|jpe?g|svg)$/,
+        use: [
+          'file-loader'
+        ]
+      },
+      // {
+      //   test: /\.(png|gif|jpeg)$/,
+      //   use: [
+      //     {
+      //       // 图片压缩
+      //       loader: 'url-loader',
+      //       options: {
+      //         limit: 8192,
+      //         name: 'images/[name].[hash].[ext]'
+      //       }
+      //     }
+      //   ]
+      // },
+      // 加载字体
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
           'file-loader'
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin(['dist'])
+  ]
 }

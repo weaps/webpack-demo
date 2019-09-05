@@ -1,3 +1,4 @@
+import './assets/font/iconfont.css'
 import './assets/css/index.css'
 import logo from './assets/images/logo.png'
 // import './assets/css/style.sass'
