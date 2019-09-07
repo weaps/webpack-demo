@@ -2,3 +2,8 @@ body {
   background: url("../images/logo.png") center center no-repeat;
 
 }
+html {
+  height: 100%;
+  background: url("../images/03.gif") no-repeat right bottom;
+  box-sizing: border-box;
+}
