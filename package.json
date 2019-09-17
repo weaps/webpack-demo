@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack-dev-server",
-    "build": "webpack"
+    "build": "webpack",
+    "dev:build": " webpack-dev-server --env=development"
   },
   "repository": {
     "type": "git",
@@ -41,5 +42,7 @@
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
 }
