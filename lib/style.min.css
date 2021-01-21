@@ -1,0 +1,18 @@
+.dhtmlx_message_area { position: fixed; right: 5px; min-width: 380px; z-index: 1000; }
+
+.dhtmlx_message_area .dhtmlx-info { width: 100%; min-height: 20px; padding: 10px 10px 10px 20px; font-family: Tahoma; margin-bottom: 10px; background-color: #edf2fc; border-radius: 4px; -webkit-transition: all .5s ease; transition: all .5s ease; -webkit-box-sizing: border-box; box-sizing: border-box; z-index: 10000; }
+
+.dhtmlx_message_area .dhtmlx-info .text { font-size: 14px; color: #909399; }
+
+.dhtmlx_message_area .dhtmlx-info.message__success { background-color: #f0f9eb; border-color: #e1f3d8; }
+
+.dhtmlx_message_area .dhtmlx-info.message__success .text { color: #67c23a; }
+
+.dhtmlx_message_area .dhtmlx-info.message__error { background-color: #fef0f0; border-color: #fde2e2; }
+
+.dhtmlx_message_area .dhtmlx-info.message__error .text { color: #f56c6c; }
+
+.dhtmlx_message_area .dhtmlx-info.message__warning { background-color: #fdf6ec; border-color: #faecd8; }
+
+.dhtmlx_message_area .dhtmlx-info.message__warning .text { color: #e6a23c; }
+/*# sourceMappingURL=style.min.css.map */

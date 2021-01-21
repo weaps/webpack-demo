@@ -1,72 +1,105 @@
-import observer from './mvvm'
-import './assets/css/style.sass'
-import './assets/css/index.css'
-import './assets/font/iconfont.css'
-import logo from './assets/images/logo.png'
-import { type } from 'os'
-import { kMaxLength } from 'buffer'
-// import './assets/css/style.sass'
-let arr = [1,1,1,1,23,2,32,58,8,8,9,9,5,6,5,8,2,3,7,8,52,9,5,65,5458,585,59,58,545,55]
-let res = new Set(arr)
-let obj = {
-  name: 'weaps',
-  car: {
-    color: 'red',
-    brand: 'Mazda'
-  }
+// import $ from 'jquery'
+// import {fn} from './test1'
+// console.log($)
+import './assets/scss/style.scss'
+import { $m } from './message'
+if (false) {
+  import(/*webpackChunkName: 'test1'*/'./test1').then(res => {
+    res()
+  })
+  .catch(err => {
+
+  })
 }
-let obj2 = {
-  _res: '',
-  get age() {
-    return this._res || 0
+
+window.event = {
+  _arr: [],
+  on(name, fn) {
+    this._arr.push({
+      name,
+      fn
+    })
   },
-  set age(value) {
-    return this._res = value
+  emit(name, ...args) {
+    // debugger
+    if (!name || typeof name !== 'string') {
+      const msg = name ? `派发事件名称必须是String类型，当前类型为: ${name}` : `派发事件名称不能为空，当前类型为: ${name}`
+      throw new Error (msg)
+    }
+    this._arr.forEach(item => {
+      // console.log(item, name)
+      if (item.name == name) {
+        item.fn && item.fn(...args)
+      }
+      // if(item && item.name === name) {}
+    })
   }
 }
-// obj.age = 30
-console.log(obj.age, 'hhhh')
-console.log()
-let dom = document.getElementsByTagName('body')[0]
-console.log(res)
-console.log(Object.assign(obj, obj2))
-let img = document.createElement('img')
-img.src = logo
-dom.appendChild(img)
 
-function deepClone(data,hash=new WeakMap()) {
-  if(data == null) return data
-  if(data instanceof RegExp) return new RegExp(data)
-  if(data instanceof Date) return new Date(data)
-  if(typeof data != 'object') return data
-  let obj = data.constructor()
-  if(hash.get(data)) {
-    return hash.get(data)
-  }
-  hash.set(data, obj)
-  for(let key in data) {
-    obj[key] = deepClone(data[key], hash)
-  }
-  return obj
-}
-let o = {}
-o.x = o
-console.log(deepClone(o))
-observer(obj)
-// obj.car.color = 'white'
-obj.car.brand = {China: 'changan', Japan: 'Mazda'}
-obj.car.brand.China = 'yiqi'
+window.event.on('test1', function(e) {
+  console.log('test1', e)
+})
+window.event.on('test2', function(e) {
+  console.log('test2', e)
+})
 
-let proto = Object.create(Array.prototype)
-proto.push = function() {
-  alert('sssss')
+
+
+class children {
+  
 }
-let handle = ['push']
-handle.forEach(item => {
-  proto[item] = function() {
-    debugger
-    Array.prototype[item].apply(this, arguments)
+
+class Observer {
+  constructor(name) {
+    this.name = name
+    let a1 = 'a1'
+    name()
   }
-});
-arr.push('a')
-console.log(arr)
+  updated() {
+    console.log(this.name)
+  }
+}
+
+
+window.o = new Observer(() => {
+  console.log(this, 'xxx', window)
+})
+console.log(o)
+
+var obj = {
+  a: {}
+}
+var aaa = Object.create(obj)
+aaa.a1 = 'a'
+aaa.b1 = 'b'
+aaa.c1 = 'c'
+console.log(aaa)
+Object.keys(aaa).forEach(item => console.log(item))
+for (const key in aaa) {
+  console.log(key, aaa[key])
+}
+
+const confirm = document.querySelector('#confirm')
+confirm.addEventListener('click', () => {
+  $m.confirm({
+    title: 'this is title',
+    text: 'text',
+    cancel: 'cancel',
+    confirm: 'confirm',
+    callback: (err) => {
+      console.log(err)
+    }
+  })
+})
+const message = document.querySelector('#message')
+message.addEventListener('click', () => {
+  $m.confirm({
+    title: 'this is title',
+    text: 'text',
+    cancel: 'cancel',
+    confirm: 'confirm',
+    callback: (err) => {
+      console.log(err)
+    }
+  })
+})
