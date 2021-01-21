@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "webpack-dev-server",
+    "dev": "webpack-dev-server",
     "build": "webpack"
   },
   "repository": {
@@ -23,13 +23,18 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.13.0",
     "postcss": "^7.0.18",
+    "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
+    "sass": "^1.23.0-module.beta.1",
+    "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "url-loader": "^2.1.0",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {}
 }

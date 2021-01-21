@@ -5,9 +5,11 @@
   <title>Title</title>
 </head>
 <body>
-<p name="body">
-  <i class="icon iconfont icon-cart"></i>
-</p>
-<script src="main.main.js"></script>
+<div id="app">
+  <div>{{data.name}}</div>
+  <h1 v-text="data.age"></h1>
+  {{data.sex}}
+  <input type="text" v-model="data.dsc">
+</div>
 </body>
 </html>

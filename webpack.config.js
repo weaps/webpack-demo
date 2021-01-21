@@ -1,29 +1,22 @@
 const path = require('path')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
+  mode: 'development',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: "[name].main.js"
+    filename: "[name].[hash].js"
   },
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(css|scss|sass)$/,
         use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {}
-          }
+          { loader: 'style-loader'},
+          { loader: 'css-loader'},
+          // { loader: 'postcss-loader'},
+          { loader: 'sass-loader'}
         ]
       },
       {
@@ -32,19 +25,6 @@ module.exports = {
           'file-loader'
         ]
       },
-      // {
-      //   test: /\.(png|gif|jpeg)$/,
-      //   use: [
-      //     {
-      //       // 图片压缩
-      //       loader: 'url-loader',
-      //       options: {
-      //         limit: 8192,
-      //         name: 'images/[name].[hash].[ext]'
-      //       }
-      //     }
-      //   ]
-      // },
       // 加载字体
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -52,9 +32,13 @@ module.exports = {
           'file-loader'
         ]
       }
+      
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html'
+    }),
     new CleanWebpackPlugin()
   ]
 }
