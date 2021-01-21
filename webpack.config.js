@@ -127,6 +127,9 @@ module.exports = {
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'common' // 指定公共 bundle 的名称。
     // })
+    new webpack.ProvidePlugin({
+      $: 'jquery'
+    })
   ],
   devServer: {
     host: '0.0.0.0',
